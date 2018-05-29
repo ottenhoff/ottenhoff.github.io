@@ -16133,9 +16133,9 @@ var App = function (_Component) {
       data: null,
       hoveredFeature: null,
       viewport: {
-        latitude: 41.504,
-        longitude: -74.00,
-        zoom: 8,
+        latitude: 40.7831,
+        longitude: -73.9112,
+        zoom: 11,
         bearing: 0,
         pitch: 0,
         width: 500,
@@ -16348,7 +16348,7 @@ var ControlPanel = function (_PureComponent) {
         _react2.default.createElement(
           "p",
           null,
-          "Filter by Urban Inst Score ",
+          "Filter by Urban Inst Investment Score (1=low, 10=high) ",
           _react2.default.createElement(
             "b",
             null,
