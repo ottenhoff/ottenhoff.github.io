@@ -33,6 +33,11 @@ const config = {
 
   devtool: 'source-map',
 
+  output: {
+    path: __dirname + "/dist",
+    filename: "bundle.js"
+  },
+
   module: {
     rules: [{
       // Compile ES2015 using bable

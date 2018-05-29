@@ -10,7 +10,7 @@ export default class ControlPanel extends PureComponent {
     return (
       <Container>
         <h3>NYC Opp Zones</h3>
-        <p>Filter by Urban Inst Score <b>{settings.score}</b>.</p>
+        <p>Filter by Urban Inst Investment Score (1=low, 10=high) <b>{settings.score}</b>.</p>
         <hr />
 
         <div key={name} className="input">

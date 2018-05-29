@@ -19,9 +19,9 @@ export default class App extends Component {
     data: null,
     hoveredFeature: null,
     viewport: {
-      latitude: 41.504,
-      longitude: -74.00,
-      zoom: 8,
+      latitude: 40.7831,
+      longitude: -73.9112,
+      zoom: 11,
       bearing: 0,
       pitch: 0,
       width: 500,
