@@ -535,16 +535,17 @@ const oppZones = new Set(
 
 
 
-export function filterOppZones(jsonData, min) {
+export function filterOppZones(jsonData, minScore, minIncome) {
   let arr = [];
   Object.keys(jsonData.features).forEach(key => {
     if (jsonData.features[key] && jsonData.features[key].properties) {
       let geoid = parseInt(jsonData.features[key].properties.geoid.replace("14000US", ""));
 
       if (oppZones.has(geoid)) {
+        let medianIncome = jsonData.features[key].properties.B19113001 ? parseInt(jsonData.features[key].properties.B19113001) : -1;
         let urban = urbanScores["" + geoid];
         let urbanScore = (urban && urban.score) ? parseInt(urban.score) : -1;
-        if (urbanScore >= min) {
+        if (urbanScore >= minScore && medianIncome >= minIncome) {
           jsonData.features[key].properties.urbanScore = parseInt(urban.score);
           arr.push(jsonData.features[key]);
         }

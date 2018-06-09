@@ -16,6 +16,7 @@ export default class App extends Component {
   state = {
     mapStyle: defaultMapStyle,
     score: 1,
+    income: 15000,
     data: null,
     hoveredFeature: null,
     viewport: {
@@ -53,7 +54,7 @@ export default class App extends Component {
   _loadJsonData = () => {
     requestJson('./data/acs.geojson', (error, response) => {
       if (!error) {
-        this._loadData(filterOppZones(response, this.state.score));
+        this._loadData(filterOppZones(response, this.state.score, this.state.income));
       }
     });
   }
@@ -71,8 +72,9 @@ export default class App extends Component {
   };
 
   _updateSettings = (name, value) => {
-    if (name === 'score') {
-      this.setState({score: value});
+    if (name === 'score' || name === 'income') {
+      if (name === 'score') this.setState({score: value});
+      if (name === 'income') this.setState({income: value});
 
       // TODO: just filter existing state data instead of reloading it
       this._loadJsonData();
@@ -126,8 +128,11 @@ export default class App extends Component {
 
         </MapGL>
 
-        <ControlPanel containerComponent={this.props.containerComponent}
-          settings={this.state} onChange={this._updateSettings} />
+        <ControlPanel
+          containerComponent={this.props.containerComponent}
+          settings={this.state}
+          onChange={this._updateSettings}
+        />
       </div>
     );
   }
